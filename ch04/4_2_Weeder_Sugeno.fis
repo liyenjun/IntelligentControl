@@ -1,0 +1,47 @@
+[System]
+Name='4_2_Weeder_Sugeno'
+Type='sugeno'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=9
+AndMethod='prod'
+OrMethod='probor'
+ImpMethod='prod'
+AggMethod='sum'
+DefuzzMethod='wtaver'
+
+[Input1]
+Name='Power'
+Range=[0 3]
+NumMFs=3
+MF1='Low':'trimf',[0 0 1]
+MF2='Middle':'trimf',[0 1 2]
+MF3='High':'trimf',[1 2 3]
+
+[Input2]
+Name='Weeds'
+Range=[0 60]
+NumMFs=3
+MF1='Small':'trimf',[0 0 20]
+MF2='Normal':'trimf',[0 20 40]
+MF3='Big':'trimf',[20 40 60]
+
+[Output1]
+Name='Time'
+Range=[0 1]
+NumMFs=3
+MF1='Little':'constant',[0]
+MF2='Middle':'constant',[50]
+MF3='Much':'constant',[100]
+
+[Rules]
+1 1, 1 (1) : 1
+1 2, 2 (1) : 1
+1 3, 3 (1) : 1
+2 1, 1 (1) : 1
+2 2, 1 (1) : 1
+2 3, 2 (1) : 1
+3 1, 1 (1) : 1
+3 2, 1 (1) : 1
+3 3, 1 (1) : 1
